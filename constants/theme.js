@@ -48,10 +48,10 @@ const COLORS = {
     },
   };
 
+
 const icons = {
   appLogo: require("../assets/icons/1_logo.png"), // Pastikan path benar
   settings: require("../assets/icons/settings.png"), // Pastikan path benar
 };
   
   export { COLORS, FONT, SIZES, SHADOWS,icons  };
-  

@@ -7,6 +7,7 @@ import heartFilled from "../assets/icons/heart.png";
 import settings from "../assets/icons/settings.png";
 import clock from "../assets/icons/clock.png";
 import logo from "../assets/icons/1_logo.png"
+
 export default {
   heart,
   left,
@@ -17,4 +18,7 @@ export default {
   clock,
   menu,
   logo,
+};
+
+  menu
 };
