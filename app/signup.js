@@ -71,127 +71,137 @@ const SignUp = () => {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-            <Stack.Screen
-                options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
-                    headerShadowVisible: false,
-                    headerLeft: () => <></>,
-                    headerTitle: "",
-                }}
+      <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+        <Stack.Screen
+          options={{
+            headerStyle: { backgroundColor: COLORS.lightWhite },
+            headerShadowVisible: false,
+            headerLeft: () => <></>,
+            headerTitle: "",
+          }}
+        />
+        <View style={{ padding: 20 }} testID="signupContainer">
+          <View
+            style={{
+              padding: 20,
+              marginLeft: "auto",
+              marginRight: "auto",
+              backgroundColor: "#f0f0f0",
+              borderRadius: 50,
+              height: 90,
+              ...SHADOWS.medium,
+              shadowColor: COLORS.white,
+            }}
+            testID="imageIcon"
+          >
+            <Image
+              source={"../../../assets/favicon.png"}
+              style={{ width: 50, height: 50 }}
             />
-            <View style={{ padding: 20 }} testID="signupContainer">
-                <View
-                    style={{
-                        padding: 20,
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        backgroundColor: "#f0f0f0",
-                        borderRadius: 50,
-                        height: 90,
-                        ...SHADOWS.medium,
-                        shadowColor: COLORS.white,
-                    }}
-                    testID="imageIcon"
-                >
-                    <Image source={icons.menu} style={{ width: 50, height: 50 }} />
-                </View>
-                <View style={{ marginTop: 30 }} testID="formData">
-                    <View style={{ marginBottom: 10 }} testID="userName">
-                        <TextInput
-                            style={[
-                                styles.input,
-                                errors.userName && { borderColor: "red" }
-                            ]}
-                            value={userName}
-                            onChangeText={setUserName}
-                            placeholder="UserName"
-                        />
-                        {errors.userName && <Text style={styles.errorText}>{errors.userName}</Text>}
-                    </View>
-                    <View style={{ marginBottom: 10 }} testID="email">
-                        <TextInput
-                            style={[
-                                styles.input,
-                                errors.email && { borderColor: "red" }
-                            ]}
-                            value={email}
-                            onChangeText={setEmail}
-                            placeholder="Email"
-                        />
-                        {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-                    </View>
-                    <View style={{ marginBottom: 10 }} testID="password">
-                        <TextInput
-                            style={[
-                                styles.input,
-                                errors.password && { borderColor: "red" }
-                            ]}
-                            value={password}
-                            onChangeText={setPassword}
-                            secureTextEntry={true}
-                            placeholder="Password"
-                        />
-                        {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-                    </View>
-                    <View style={{ marginBottom: 20 }} testID="confirmPassword">
-                        <TextInput
-                            style={[
-                                styles.input,
-                                errors.confirmPassword && { borderColor: "red" }
-                            ]}
-                            value={confirmPassword}
-                            onChangeText={setConfirmPassword}
-                            secureTextEntry={true}
-                            placeholder="Confirm Password"
-                        />
-                        {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
-                    </View>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={handleRegister}
-                        disabled={loading}
-                        testID="handleRegister"
-                    >
-                        {loading ? (
-                            <ActivityIndicator color="#fff" />
-                        ) : (
-                            <Text style={styles.buttonText}>Sign Up</Text>
-                        )}
-                    </TouchableOpacity>
-                </View>
-                <View
-                    style={styles.loginContainer}
-                    testID="textData"
-                >
-                    <Text style={{ marginRight: 5 }}>Already have an account?</Text>
-                    <TouchableOpacity onPress={() => router.push("/login")}>
-                        <Text style={{ color: "blue" }}>Login</Text>
-                    </TouchableOpacity>
-                </View>
+          </View>
+          <View style={{ marginTop: 30 }} testID="formData">
+            <View style={{ marginBottom: 10 }} testID="userName">
+              <TextInput
+                style={[
+                  styles.input,
+                  errors.userName && { borderColor: "red" },
+                ]}
+                value={userName}
+                onChangeText={setUserName}
+                placeholder="UserName"
+              />
+              {errors.userName && (
+                <Text style={styles.errorText}>{errors.userName}</Text>
+              )}
             </View>
-
-            {/* Modal untuk menampilkan informasi signup berhasil */}
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}
+            <View style={{ marginBottom: 10 }} testID="email">
+              <TextInput
+                style={[styles.input, errors.email && { borderColor: "red" }]}
+                value={email}
+                onChangeText={setEmail}
+                placeholder="Email"
+              />
+              {errors.email && (
+                <Text style={styles.errorText}>{errors.email}</Text>
+              )}
+            </View>
+            <View style={{ marginBottom: 10 }} testID="password">
+              <TextInput
+                style={[
+                  styles.input,
+                  errors.password && { borderColor: "red" },
+                ]}
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={true}
+                placeholder="Password"
+              />
+              {errors.password && (
+                <Text style={styles.errorText}>{errors.password}</Text>
+              )}
+            </View>
+            <View style={{ marginBottom: 20 }} testID="confirmPassword">
+              <TextInput
+                style={[
+                  styles.input,
+                  errors.confirmPassword && { borderColor: "red" },
+                ]}
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry={true}
+                placeholder="Confirm Password"
+              />
+              {errors.confirmPassword && (
+                <Text style={styles.errorText}>{errors.confirmPassword}</Text>
+              )}
+            </View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleRegister}
+              disabled={loading}
+              testID="handleRegister"
             >
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <Text style={styles.modalTitle}>Signup Successful!</Text>
-                        <Text style={styles.modalMessage}>You have successfully signed up.</Text>
-                        <Button title="Go to Login" onPress={() => {
-                            setModalVisible(false);
-                            router.replace("/login");
-                        }} />
-                    </View>
-                </View>
-            </Modal>
-        </SafeAreaView>
+              {loading ? (
+                <ActivityIndicator color="#fff" />
+              ) : (
+                <Text style={styles.buttonText}>Sign Up</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+          <View style={styles.loginContainer} testID="textData">
+            <Text style={{ marginRight: 5 }}>Already have an account?</Text>
+            <TouchableOpacity onPress={() => router.push("/login")}>
+              <Text style={{ color: "blue" }}>Login</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Modal untuk menampilkan informasi signup berhasil */}
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalTitle}>Signup Successful!</Text>
+              <Text style={styles.modalMessage}>
+                You have successfully signed up.
+              </Text>
+              <Button
+                title="Go to Login"
+                onPress={() => {
+                  setModalVisible(false);
+                  router.replace("/login");
+                }}
+              />
+            </View>
+          </View>
+        </Modal>
+      </SafeAreaView>
     );
 };
 
