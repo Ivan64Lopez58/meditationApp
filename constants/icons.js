@@ -19,6 +19,3 @@ export default {
   menu,
   logo,
 };
-
-  menu
-};
